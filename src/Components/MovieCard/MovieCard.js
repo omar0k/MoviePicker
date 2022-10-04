@@ -1,16 +1,29 @@
 import React from "react";
-import axios from "axios";
-import KEY from "../Key";
+
 import { useState, useEffect } from "react";
-
-let baseUrl = "https://api.themoviedb.org/3/";
-
-const MovieCard = () => {
-  useEffect(() => {
-    axios.get(baseUrl + `trending/all/day?api_key=${KEY}`).then((response) => {
-      console.log(response.data);
-    });
-  });
-  return <div>MovieCard</div>;
+import { Link } from "react-router-dom";
+const removeSpacesFromTitle = (title) => {
+  title = title.replace(/\s+/g, "_");
+  return title;
+};
+const MovieCard = ({
+  movieTitle,
+  movieYear,
+  movieRating,
+  moviePoster,
+  movieID,
+}) => {
+  return (
+    <Link to={`movie/${movieID}--${removeSpacesFromTitle(movieTitle)}`}>
+      <div className="movie-info">
+        <h3>{movieTitle}</h3>
+        <img src={moviePoster} alt={movieTitle} />
+        <div>
+          <span>{movieYear}</span>
+          <span> {movieRating}</span>
+        </div>
+      </div>
+    </Link>
+  );
 };
 export default MovieCard;
