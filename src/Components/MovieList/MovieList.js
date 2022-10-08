@@ -18,11 +18,14 @@ const MovieList = ({ movieList }) => {
           <MovieCard
             {...movie}
             key={index}
+            mediaType={movie.media_type}
             movieTitle={movie.name || movie.title}
             movieYear={
               movie.first_air_date
                 ? dateToMonthYear(movie.first_air_date)
-                : dateToMonthYear(movie.release_date)
+                : movie.release_date
+                ? dateToMonthYear(movie.release_date)
+                : ""
             }
             moviePoster={
               movie.poster_path

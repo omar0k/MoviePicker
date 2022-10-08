@@ -1,12 +1,10 @@
 import React from "react";
-
+import { removeSpacesFromTitle } from "../Utils/Utils";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-const removeSpacesFromTitle = (title) => {
-  title = title.replace(/\s+/g, "_");
-  return title;
-};
+
 const MovieCard = ({
+  mediaType,
   movieTitle,
   movieYear,
   movieRating,
@@ -14,16 +12,20 @@ const MovieCard = ({
   movieID,
 }) => {
   return (
-    <Link to={`movie/${movieID}--${removeSpacesFromTitle(movieTitle)}`}>
-      <div className="movie-info">
+    <div className="movie-info">
+      <Link
+        to={`${
+          mediaType == "tv" ? "tv" : "movie"
+        }/${movieID}--${removeSpacesFromTitle(movieTitle)}`}
+      >
         <h3>{movieTitle}</h3>
         <img src={moviePoster} alt={movieTitle} />
         <div>
           <span>{movieYear}</span>
           <span> {movieRating}</span>
         </div>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 };
 export default MovieCard;
