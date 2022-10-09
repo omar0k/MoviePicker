@@ -14,7 +14,6 @@ const MovieList = ({ movieList }) => {
   return (
     <div className="movie-list">
       {movieList.map((movie, index) => {
-        console.log("reeee", movie.media_type);
         return (
           <MovieCard
             {...movie}

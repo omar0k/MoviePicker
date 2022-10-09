@@ -9,19 +9,16 @@ const MovieCompare = () => {
   let posterUrl = "https://image.tmdb.org/t/p/w342/";
   let baseUrl = "https://api.themoviedb.org/3/";
   const [MovieCompare, setMovieCompare] = useState({});
-  const { id, movieName } = useParams();
+  const { id, mediatype } = useParams();
   useEffect(() => {
-    axios
-      .all([
-        axios.get(baseUrl + `movie/${id}?api_key=${KEY}&language=en-US`),
-        axios.get(baseUrl + `tv/${id}?api_key=${KEY}&language=en-US`),
-      ])
-      .then(
-        axios.spread((...responses) => {
-          console.log(responses);
+    mediatype == "tv"
+      ? axios.get(baseUrl + `/tv/${id}?api_key=${KEY}`).then((response) => {
+          setMovieCompare(response.data);
         })
-      );
-  }, [id]);
+      : axios.get(baseUrl + `/movie/${id}?api_key=${KEY}`).then((response) => {
+          setMovieCompare(response.data);
+        });
+  }, []);
   return (
     <div>
       <Search />

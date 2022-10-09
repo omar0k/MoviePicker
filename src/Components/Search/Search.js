@@ -11,39 +11,37 @@ const Search = ({ setMovieList }) => {
   const [filteredData, setFilteredData] = useState([]);
   const [wordEntered, setWordEntered] = useState("");
 
+  let mediaTypeArray = [];
   const handleFilter = (e) => {
     const searchTerm = e.target.value;
     setWordEntered(searchTerm);
     let combinedArray = [];
     if (searchTerm.length >= 1) {
-      const first = baseUrl + `search/movie?api_key=${KEY}&query=${searchTerm}`;
-      const second = baseUrl + `search/tv?api_key=${KEY}&query=${searchTerm}`;
       axios
-        .all([axios.get(first), axios.get(second)])
+        .all([
+          axios.get(
+            baseUrl + `search/multi?api_key=${KEY}&query=${searchTerm}&page=1`
+          ),
+          axios.get(
+            baseUrl + `search/multi?api_key=${KEY}&query=${searchTerm}&page=2`
+          ),
+        ])
         .then(
           axios.spread((...responses) => {
-            let moviesArray = responses[0].data.results;
-            let showsArray = responses[1].data.results;
-            combinedArray = [...moviesArray, ...showsArray];
-            combinedArray.sort(
+            let firstPage = responses[0].data.results;
+            let secondPage = responses[1].data.results;
+            combinedArray = [...firstPage, ...secondPage];
+            let filtered = combinedArray.filter((value) => {
+              return !value.media_type.includes("person");
+            });
+            filtered.sort(
               (a, b) => parseFloat(b.popularity) - parseFloat(a.popularity)
             );
-            console.log(combinedArray);
-            const newFilter = combinedArray.filter((value) => {
-              return (
-                value.title ||
-                value.name ||
-                value.original_title ||
-                value.original_name
-              )
-                .toLowerCase()
-                .includes(searchTerm.toLowerCase());
+            mediaTypeArray = filtered.map((value, index) => {
+              return value.media_type;
             });
-            if (searchTerm === "") {
-              setFilteredData([]);
-            } else {
-              setFilteredData(newFilter);
-            }
+            console.log(mediaTypeArray);
+            setFilteredData(filtered);
           })
         )
         .catch((errors) => {
@@ -79,7 +77,9 @@ const Search = ({ setMovieList }) => {
           <div className="search-results">
             <ul id="search_results">
               {filteredData.map((value, key) => {
-                return <SearchResult movie={value} />;
+                return (
+                  <SearchResult movie={value} mediaType={mediaTypeArray[key]} />
+                );
               })}
             </ul>
           </div>
