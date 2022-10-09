@@ -1,13 +1,14 @@
 import React from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import Home from "./Components/Home/Home";
-import MovieDetails from "./Components/MovieCompare/MovieCompare";
 import Search from "./Components/Search/Search";
+import "./App.css";
+import MovieCompare from "./Components/MovieCompare/MovieCompare";
 const App = () => {
   return (
     <Routes>
       <Route exact path="/" element={<Home />} />
-      <Route exact path="/movie/:id--:movieName" element={<MovieDetails />} />
+      <Route exact path="/:mediatype/:id--:movieName" element={<MovieCompare />} />
     </Routes>
   );
 };

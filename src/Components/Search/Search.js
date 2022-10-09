@@ -4,8 +4,7 @@ import KEY from "../Key";
 import { AiOutlineSearch, AiOutlineClose } from "react-icons/ai";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { removeSpacesFromTitle } from "../Utils/Utils";
-let posterUrl = `https://image.tmdb.org/t/p/`;
+import SearchResult from "../SearchResult/SearchResult";
 
 const Search = ({ setMovieList }) => {
   const baseUrl = "https://api.themoviedb.org/3/";
@@ -18,7 +17,6 @@ const Search = ({ setMovieList }) => {
     let combinedArray = [];
     if (searchTerm.length >= 1) {
       const first = baseUrl + `search/movie?api_key=${KEY}&query=${searchTerm}`;
-      // console.log("first", searchTerm, "--", first);
       const second = baseUrl + `search/tv?api_key=${KEY}&query=${searchTerm}`;
       axios
         .all([axios.get(first), axios.get(second)])
@@ -30,6 +28,7 @@ const Search = ({ setMovieList }) => {
             combinedArray.sort(
               (a, b) => parseFloat(b.popularity) - parseFloat(a.popularity)
             );
+            console.log(combinedArray);
             const newFilter = combinedArray.filter((value) => {
               return (
                 value.title ||
@@ -58,61 +57,35 @@ const Search = ({ setMovieList }) => {
     setFilteredData([]);
     setWordEntered("");
   };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
+
   return (
     <div className="search">
-      <div className="searchInputs">
-        <form action="" onSubmit={handleSubmit}>
-          <input type="text" value={wordEntered} onChange={handleFilter} />
-        </form>
-        <div className="searchIcon">
+      <div className="search-inputs">
+        <input
+          autoComplete="off"
+          id="search-bar"
+          type="text"
+          value={wordEntered}
+          onChange={handleFilter}
+        />
+        <div className="search-icon">
           {wordEntered.length == 0 ? (
             <AiOutlineSearch />
           ) : (
             <AiOutlineClose id="clearBtn" onClick={clearInput} />
           )}
         </div>
+        {filteredData.length != 0 && (
+          <div className="search-results">
+            <ul id="search_results">
+              {filteredData.map((value, key) => {
+                return <SearchResult movie={value} />;
+              })}
+            </ul>
+          </div>
+        )}
       </div>
-      {filteredData.length != 0 && (
-        <div className="searchResults">
-          {filteredData.map((value, key) => {
-            return (
-              <Link
-                key={key}
-                className="dataItem"
-                to={`${value.mediaType == "tv" ? "tv" : "movie"}/${
-                  value.id
-                }--${removeSpacesFromTitle(
-                  value.title || value.name || value.original_name
-                )}`}
-              >
-                <img
-                  src={
-                    value.poster_path
-                      ? posterUrl + "w45" + value.poster_path
-                      : "https://via.placeholder.com/45x68?text=Movie+Poster+Not+Available"
-                  }
-                  alt={value.title}
-                />
-                <p>{value.title || value.name || value.original_name}</p>
-              </Link>
-            );
-          })}
-        </div>
-      )}
     </div>
   );
 };
-// let baseUrl = "https://api.themoviedb.org/3/";
-//   const [movie, setMovie] = useState("");
-//   useEffect(() => {
-//     axios
-//       .get(baseUrl + `trending/all/day?api_key=${KEY}&page=3`)
-//       .then((response) => {
-//         setMovieList(response.data.results);
-//       });
-//   }, []);
-//
 export default Search;
