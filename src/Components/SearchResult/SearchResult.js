@@ -2,15 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { removeSpacesFromTitle } from "../Utils/Utils";
 
-const SearchResult = ({ movie,mediaType}) => {
-  
+const SearchResult = ({ movie }) => {
   let posterUrl = `https://image.tmdb.org/t/p/`;
   return (
     <div>
       <li>
         <Link
           className="data-item"
-          to={`/${"tv"}/${movie.id}--${removeSpacesFromTitle(
+          to={`/c/${movie.media_type === "tv" ? "tv" : "movie"}/${
+            movie.id
+          }--${removeSpacesFromTitle(
             movie.title || movie.name || movie.original_name
           )}`}
         >

@@ -1,12 +1,11 @@
-import React, { useEffect, useState, useTransition } from "react";
+import React, { useState } from "react";
 import "./Search.css";
 import KEY from "../Key";
 import { AiOutlineSearch, AiOutlineClose } from "react-icons/ai";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import SearchResult from "../SearchResult/SearchResult";
 
-const Search = ({ setMovieList }) => {
+const Search = () => {
   const baseUrl = "https://api.themoviedb.org/3/";
   const [filteredData, setFilteredData] = useState([]);
   const [wordEntered, setWordEntered] = useState("");
@@ -40,7 +39,6 @@ const Search = ({ setMovieList }) => {
             mediaTypeArray = filtered.map((value, index) => {
               return value.media_type;
             });
-            console.log(mediaTypeArray);
             setFilteredData(filtered);
           })
         )
@@ -63,17 +61,18 @@ const Search = ({ setMovieList }) => {
           autoComplete="off"
           id="search-bar"
           type="text"
+          placeholder="Type Movie or TV Show name"
           value={wordEntered}
           onChange={handleFilter}
         />
         <div className="search-icon">
-          {wordEntered.length == 0 ? (
+          {wordEntered.length === 0 ? (
             <AiOutlineSearch />
           ) : (
             <AiOutlineClose id="clearBtn" onClick={clearInput} />
           )}
         </div>
-        {filteredData.length != 0 && (
+        {filteredData.length !== 0 && (
           <div className="search-results">
             <ul id="search_results">
               {filteredData.map((value, key) => {

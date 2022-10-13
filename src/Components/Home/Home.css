@@ -1,0 +1,31 @@
+.suggestions-container {
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+#site-info {
+    margin-top: 50px;
+    text-align: center;
+}
+
+#movie-icon {
+    color: var(--primary-light-color);
+    font-size: 10rem;
+}
+#site-name{
+    font-size: 2.5rem;
+}
+#movie-icon svg {
+    color: red;
+}
+
+#choose-text {
+    color: #666;
+    font-size: 1.4rem;
+    font-weight: lighter;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    text-align: center;
+}

@@ -1,19 +1,14 @@
-import { React, useEffect, useState } from "react";
+import { React } from "react";
+import "./MovieList.css";
+import { dateToMonthYear } from "../Utils/Utils";
 import MovieCard from "../MovieCard/MovieCard";
-let posterUrl = "https://image.tmdb.org/t/p/w342/";
-const dateToMonthYear = (date) => {
-  let year = date.slice(0, 4);
-  let month = date.slice(6, 7);
-  const dateObj = new Date();
-  dateObj.setMonth(month);
-  month = dateObj.toLocaleDateString("en-US", { month: "long" });
-  return [month + " " + year];
-};
+let posterUrl = "https://image.tmdb.org/t/p/w45/";
 
-const MovieList = ({ movieList }) => {
+const MovieList = ({ movieList, listTitle }) => {
   return (
     <div className="movie-list">
-      {movieList.map((movie, index) => {
+      <h5 id="list-title">{listTitle}</h5>
+      {movieList.slice(0, 5).map((movie, index) => {
         return (
           <MovieCard
             {...movie}
@@ -33,7 +28,7 @@ const MovieList = ({ movieList }) => {
                 : "https://via.placeholder.com/342x513?text=Movie+Poster+Not+Available"
             }
             movieID={movie.id}
-            movieRating={movie.vote_average}
+            movieRating={movie.vote_average.toFixed(1)}
           />
         );
       })}
