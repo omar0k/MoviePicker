@@ -1,0 +1,43 @@
+#vote-average::before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: #f7911d;
+    content: "\f005";
+}
+
+#movie-item {
+    color: white;
+    box-shadow: 60px 60px 150px black inset, -60px -60px 150px black inset;
+    height: 100vh;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+}
+
+#genre~#genre::before {
+    content: ', ';
+}
+
+#country~#country::before {
+    content: ', ';
+}
+
+#company~#company::before {
+    content: ", ";
+}
+
+#runtime {
+    padding-right: 15px;
+}
+
+#overview {
+    position: relative;
+    color: red;
+    width: 250px;
+    height: 350px;
+    overflow-y: auto;
+}

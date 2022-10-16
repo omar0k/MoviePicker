@@ -1,14 +1,15 @@
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import KEY from "../Key";
 import Search from "../Search/Search";
 import "./MovieCompare.css";
+import Movie from "../Movie/Movie";
 
 const MovieCompare = () => {
-  let posterUrl = "https://image.tmdb.org/t/p/w342/";
   let baseUrl = "https://api.themoviedb.org/3/";
   const [MovieCompare, setMovieCompare] = useState([]);
+  const location = useLocation();
   const { id, mediatype } = useParams();
   useEffect(() => {
     mediatype === "tv"
@@ -24,22 +25,14 @@ const MovieCompare = () => {
   ];
   console.log(unique);
   return (
-    <div>
+    <>
       <Search />
-      {unique.map((item, index) => {
-        return (
-          <div key={index}>
-            <h3>{item.original_title}</h3>
-
-            <img src={posterUrl + item.poster_path} alt={item.original_title} />
-
-            <div>
-              <p>{item.overview}</p>
-            </div>
-          </div>
-        );
-      })}
-    </div>
+      <div className="movies-container">
+        {unique.map((item, index) => {
+          return <Movie movie={item} key={index} />;
+        })}
+      </div>
+    </>
   );
 };
 

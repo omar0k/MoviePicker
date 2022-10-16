@@ -5,6 +5,7 @@ import MovieCard from "../MovieCard/MovieCard";
 let posterUrl = "https://image.tmdb.org/t/p/w45/";
 
 const MovieList = ({ movieList, listTitle }) => {
+  console.log(movieList)
   return (
     <div className="movie-list">
       <h5 id="list-title">{listTitle}</h5>
@@ -25,7 +26,7 @@ const MovieList = ({ movieList, listTitle }) => {
             moviePoster={
               movie.poster_path
                 ? posterUrl + movie.poster_path
-                : "https://via.placeholder.com/342x513?text=Movie+Poster+Not+Available"
+                : "https://via.placeholder.com/45x68?text=Movie+Poster+Not+Available"
             }
             movieID={movie.id}
             movieRating={movie.vote_average.toFixed(1)}
