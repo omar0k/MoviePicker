@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import KEY from "../Key";
@@ -11,10 +11,11 @@ const MovieCompare = () => {
   const [MovieCompare, setMovieCompare] = useState([]);
   const { id, mediatype } = useParams();
   const removeObjectWithId = (arr, id) => {
-    const objWithIdIndex = arr.findIndex((obj) => obj.id === id);
-    arr.splice(objWithIdIndex, 1);
-
-    return arr;
+    const newArr = arr.filter((obj) => {
+      return obj.id !== id;
+    });
+    console.log(newArr);
+    return newArr;
   };
   useEffect(() => {
     mediatype === "tv"
@@ -28,16 +29,31 @@ const MovieCompare = () => {
   const unique = [
     ...new Map(MovieCompare.map((item) => [item["id"], item])).values(),
   ];
-  // console.log(unique, similarMoviesShows);
   return (
     <>
-      <Search />
-      {unique.length >= 5 ? (
-        alert("Maximum number reached")
-      ) : (
+      <div className="top-nav">
+        <Link to={"/"}>
+          <button className="buttons" id="home">
+            Home
+          </button>
+        </Link>
+        <Search />
+        <button className="buttons" id="reset">
+          Reset
+        </button>
+      </div>
+      {unique.length <= 5 && (
         <div className="movies-container">
           {unique.map((item, index) => {
-            return <Movie movie={item} key={index} mediaType={mediatype} />;
+            return (
+              <Movie
+                movie={item}
+                key={index}
+                mediaType={mediatype}
+                movieArray={unique}
+                removeMovie={removeObjectWithId}
+              />
+            );
           })}
         </div>
       )}

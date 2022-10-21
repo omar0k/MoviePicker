@@ -9,7 +9,7 @@
     display: flex;
     height: 1250px;
     flex-flow: column;
-    gap: 5px;
+    gap: 10px;
     color: white;
     box-shadow: 60px 60px 150px black inset, -60px -60px 150px black inset;
     width: 100%;
@@ -17,6 +17,26 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: top center;
+}
+
+#img-btn {
+    position: relative;
+}
+
+#img-btn #remove-btn {
+    border: 0;
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    cursor: pointer;
+    right: 0;
+}
+#remove-btn svg{
+    background-color: transparent;
+    color: white;
+    font-size:1.5rem;
 }
 
 #overview {

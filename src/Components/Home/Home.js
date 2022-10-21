@@ -27,7 +27,7 @@ const Home = () => {
         axios.get(baseUrl + `movie/popular?api_key=${KEY}`),
         axios.get(baseUrl + `tv/popular?api_key=${KEY}`),
         axios.get(baseUrl + `movie/top_rated?api_key=${KEY}`),
-        // axios.get(baseUrl + `tv/top_rated?api_key=${KEY}`),
+        axios.get(baseUrl + `tv/top_rated?api_key=${KEY}`),
       ])
       .then(
         axios.spread((...responses) => {
@@ -37,7 +37,7 @@ const Home = () => {
           setPopularMovies(responses[3].data.results);
           setPopularShows(responses[4].data.results);
           setTopMovies(responses[5].data.results);
-          // setTopShows(responses[6].data.results);
+          setTopShows(responses[6].data.results);
         })
       )
       .catch((error) => {
@@ -65,7 +65,7 @@ const Home = () => {
         <MovieList movieList={popularMovies} listTitle={"Popular Movies"} />
         <MovieList movieList={popularShows} listTitle={"Popular Shows"} />
         <MovieList movieList={topMovies} listTitle={"Top Rated Movies"} />
-        {/* <MovieList movieList={topShows} listTitle={"Top Rated Shows"} /> */}
+        <MovieList movieList={topShows} listTitle={"Top Rated Shows"} />
       </div>
     </>
   );

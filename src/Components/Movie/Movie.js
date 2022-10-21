@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import KEY from "../Key";
 import MovieList from "../MovieList/MovieList";
+import { AiFillCloseCircle } from "react-icons/ai";
 import {
   dateToMonthYear,
   getRunTimeInHours,
@@ -40,11 +41,16 @@ const Movie = ({ movie, mediaType }) => {
         })`,
       }}
     >
-      <img
-        id="poster"
-        src={posterUrl + movie.poster_path}
-        alt={movie.original_title}
-      />
+      <div id="img-btn">
+        <img
+          id="poster"
+          src={posterUrl + movie.poster_path}
+          alt={movie.original_title}
+        />
+        {/* <button id="remove-btn">
+          <AiFillCloseCircle />
+        </button> */}
+      </div>
       <div>
         <p>{movie.original_title || movie.original_name}</p>
       </div>

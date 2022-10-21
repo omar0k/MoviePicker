@@ -55,8 +55,20 @@ const Search = () => {
   };
   return (
     <div className="search">
-      <div className="search-inputs" >
+      <div className="search-inputs">
         <input
+          onBlur={() => {
+            setTimeout(() => {
+              document.getElementById("dropdown") &&
+                (document.getElementById("dropdown").style.display = "none");
+            }, 80);
+          }}
+          onFocus={() => {
+            setTimeout(() => {
+              document.getElementById("dropdown") &&
+                (document.getElementById("dropdown").style.display = "inline");
+            }, 80);
+          }}
           autoComplete="off"
           id="search-bar"
           type="text"
@@ -72,7 +84,7 @@ const Search = () => {
           )}
         </div>
         {filteredData.length !== 0 && (
-          <div className="search-results" id="dropdown" >
+          <div className="search-results" id="dropdown">
             <ul id="search_results">
               {filteredData.map((value, key) => {
                 return (

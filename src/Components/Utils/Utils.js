@@ -1,5 +1,6 @@
 export const removeSpacesFromTitle = (title) => {
   title = title.replace(/\s+/g, "_");
+  title = title.replace(/\//g, "_");
   return title;
 };
 export const shortenNumber = (num) => {
