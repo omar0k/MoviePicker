@@ -8,6 +8,9 @@ import "./Home.css";
 const baseUrl = "https://api.themoviedb.org/3/";
 
 const Home = () => {
+  axios.get(baseUrl + `tv/top_rated?api_key=${KEY}`).then((response) => {
+    console.log(response.data.results);
+  });
   const [moviesTrending, setMoviesTrending] = useState([]);
   const [moviesNowPlaying, setMoviesNowPlaying] = useState([]);
   const [showsAiring, setShowsAiring] = useState([]);
@@ -24,7 +27,7 @@ const Home = () => {
         axios.get(baseUrl + `movie/popular?api_key=${KEY}`),
         axios.get(baseUrl + `tv/popular?api_key=${KEY}`),
         axios.get(baseUrl + `movie/top_rated?api_key=${KEY}`),
-        axios.get(baseUrl + `tv/top_rated?api_key=${KEY}`),
+        // axios.get(baseUrl + `tv/top_rated?api_key=${KEY}`),
       ])
       .then(
         axios.spread((...responses) => {
@@ -34,10 +37,14 @@ const Home = () => {
           setPopularMovies(responses[3].data.results);
           setPopularShows(responses[4].data.results);
           setTopMovies(responses[5].data.results);
-          setTopShows(responses[6].data.results);
+          // setTopShows(responses[6].data.results);
         })
-      );
+      )
+      .catch((error) => {
+        console.log(error);
+      });
   }, []);
+  console.log(topShows);
   return (
     <>
       <div id="site-info">
@@ -58,7 +65,7 @@ const Home = () => {
         <MovieList movieList={popularMovies} listTitle={"Popular Movies"} />
         <MovieList movieList={popularShows} listTitle={"Popular Shows"} />
         <MovieList movieList={topMovies} listTitle={"Top Rated Movies"} />
-        <MovieList movieList={topShows} listTitle={"Top Rated Shows"} />
+        {/* <MovieList movieList={topShows} listTitle={"Top Rated Shows"} /> */}
       </div>
     </>
   );

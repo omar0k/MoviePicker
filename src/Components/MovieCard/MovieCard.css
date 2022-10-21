@@ -18,11 +18,14 @@
 
 .movie-info:hover {
     background-color: var(--primary-light-color);
-    box-shadow: 3px 1px 6px 1px gray;
+}
+
+.movie-link:hover {
+    color: black;
 }
 
 .movie-link {
-    color: #222;
+    color: #555;
     flex-flow: row nowrap;
     width: 100%;
     border: 0;

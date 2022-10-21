@@ -13,7 +13,8 @@ const MovieCard = ({
 }) => {
   return (
     <div className="movie-info">
-      <Link className="movie-link"
+      <Link
+        className="movie-link"
         to={`/c/${
           mediaType === "tv" ? "tv" : "movie"
         }/${movieID}--${removeSpacesFromTitle(movieTitle)}`}

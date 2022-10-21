@@ -53,10 +53,9 @@ const Search = () => {
     setFilteredData([]);
     setWordEntered("");
   };
-
   return (
     <div className="search">
-      <div className="search-inputs">
+      <div className="search-inputs" >
         <input
           autoComplete="off"
           id="search-bar"
@@ -73,11 +72,15 @@ const Search = () => {
           )}
         </div>
         {filteredData.length !== 0 && (
-          <div className="search-results">
+          <div className="search-results" id="dropdown" >
             <ul id="search_results">
               {filteredData.map((value, key) => {
                 return (
-                  <SearchResult movie={value} mediaType={mediaTypeArray[key]} />
+                  <SearchResult
+                    movie={value}
+                    mediaType={mediaTypeArray[key]}
+                    key={key}
+                  />
                 );
               })}
             </ul>

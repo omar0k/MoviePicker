@@ -6,16 +6,24 @@
 }
 
 #movie-item {
+    display: flex;
+    height: 1250px;
+    flex-flow: column;
+    gap: 5px;
     color: white;
     box-shadow: 60px 60px 150px black inset, -60px -60px 150px black inset;
-    height: 100vh;
     width: 100%;
-    justify-content: center;
     align-items: center;
-    text-align: center;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: top center;
+}
+
+#overview {
+    color: inherit;
+    width: 250px;
+    height: 200px;
+    overflow-y: auto;
 }
 
 #genre~#genre::before {
@@ -26,18 +34,19 @@
     content: ', ';
 }
 
+#poster {
+    box-shadow: 0 0 10px 3px rgba(128, 128, 128, 0.399);
+}
+
+#revenue {
+    margin-left: 20px;
+    color: greenyellow;
+}
+
 #company~#company::before {
     content: ", ";
 }
 
 #runtime {
     padding-right: 15px;
-}
-
-#overview {
-    position: relative;
-    color: red;
-    width: 250px;
-    height: 350px;
-    overflow-y: auto;
 }
