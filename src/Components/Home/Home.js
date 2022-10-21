@@ -11,6 +11,14 @@ const Home = () => {
   axios.get(baseUrl + `tv/top_rated?api_key=${KEY}`).then((response) => {
     console.log(response.data.results);
   });
+  const [theme, setTheme] = useState("light");
+  const toggleTheme = () => {
+    if (theme === "light") {
+      setTheme("dark");
+    } else {
+      setTheme("light");
+    }
+  };
   const [moviesTrending, setMoviesTrending] = useState([]);
   const [moviesNowPlaying, setMoviesNowPlaying] = useState([]);
   const [showsAiring, setShowsAiring] = useState([]);
@@ -44,9 +52,12 @@ const Home = () => {
         console.log(error);
       });
   }, []);
-  console.log(topShows);
+  useEffect(() => {
+    document.body.className = theme;
+  }, [theme]);
   return (
-    <>
+    <div className={`home ${theme}`}>
+      <button onClick={toggleTheme}>Dark Mode</button>
       <div id="site-info">
         <TbMovie id="movie-icon" />
         <p id="site-name">Movie Picker</p>
@@ -67,7 +78,7 @@ const Home = () => {
         <MovieList movieList={topMovies} listTitle={"Top Rated Movies"} />
         <MovieList movieList={topShows} listTitle={"Top Rated Shows"} />
       </div>
-    </>
+    </div>
   );
 };
 
