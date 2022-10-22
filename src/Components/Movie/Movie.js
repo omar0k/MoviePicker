@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { useState } from "react";
 import KEY from "../Key";
 import MovieList from "../MovieList/MovieList";
-import { AiFillCloseCircle } from "react-icons/ai";
 import {
   dateToMonthYear,
   getRunTimeInHours,
@@ -27,7 +26,6 @@ const Movie = ({ movie, mediaType }) => {
           .then((response) => {
             setSimilarMoviesShows(response.data.results);
           });
-    console.log(movie.id);
   }, [movie]);
 
   return (
@@ -57,10 +55,10 @@ const Movie = ({ movie, mediaType }) => {
       <div id="rating">
         <span id="vote-average">{movie.vote_average.toFixed(1)}</span>
       </div>
-      <div id="medias">
+      {/* <div id="medias">
         <button>Images</button>
         <button>Vidoes</button>
-      </div>
+      </div> */}
       <div id="info">
         <p id="countries">
           {movie.production_countries.map((country, index) => {
@@ -114,6 +112,7 @@ const Movie = ({ movie, mediaType }) => {
             listTitle={"Related"}
             backgroundColor={"transparent"}
             boxShadow={"none"}
+            listMediaType={mediaType}
           />
         }
       </div>

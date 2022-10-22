@@ -7,11 +7,29 @@
 }
 
 .movie-list {
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 2rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    max-width: 350px;
+    width: 100%;
+}
+
+.movie-list.dark {
+    background-color: #232323;
+    box-shadow: 0 0 10px 1px var(--primary-light-color);
+    color: white;
+
+}
+
+.movie-list.light {
     background-color: var(--main-bg-color-light);
     padding: 5px;
     border: none;
     border-radius: 5px;
-    box-shadow: 4px 3px 10px 3px #AAC4FF;
+    box-shadow: 0 0 10px 3px #AAC4FF;
     margin-bottom: 2rem;
     margin-left: 1rem;
     margin-right: 1rem;

@@ -4,10 +4,17 @@ import { dateToMonthYear } from "../Utils/Utils";
 import MovieCard from "../MovieCard/MovieCard";
 let posterUrl = "https://image.tmdb.org/t/p/w45/";
 
-const MovieList = ({ movieList, listTitle, backgroundColor, boxShadow }) => {
+const MovieList = ({
+  movieList,
+  listTitle,
+  backgroundColor,
+  boxShadow,
+  listMediaType,
+  theme,
+}) => {
   return (
     <div
-      className="movie-list"
+      className={`movie-list ${theme}`}
       style={{
         backgroundColor: backgroundColor,
         boxShadow: boxShadow,
@@ -17,6 +24,7 @@ const MovieList = ({ movieList, listTitle, backgroundColor, boxShadow }) => {
       {movieList.slice(0, 5).map((movie, index) => {
         return (
           <MovieCard
+            listMediaType={listMediaType}
             {...movie}
             key={index}
             mediaType={movie.media_type}

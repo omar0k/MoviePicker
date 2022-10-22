@@ -5,12 +5,10 @@ import MovieList from "../MovieList/MovieList";
 import KEY from "../Key";
 import Search from "../Search/Search";
 import "./Home.css";
+import { BsFillSunFill, BsFillMoonFill } from "react-icons/bs";
 const baseUrl = "https://api.themoviedb.org/3/";
 
 const Home = () => {
-  axios.get(baseUrl + `tv/top_rated?api_key=${KEY}`).then((response) => {
-    console.log(response.data.results);
-  });
   const [theme, setTheme] = useState("light");
   const toggleTheme = () => {
     if (theme === "light") {
@@ -57,7 +55,9 @@ const Home = () => {
   }, [theme]);
   return (
     <div className={`home ${theme}`}>
-      <button onClick={toggleTheme}>Dark Mode</button>
+      <button onClick={toggleTheme} id="dark-mode-toggle">
+        {theme === "light" ? <BsFillMoonFill /> : <BsFillSunFill />}
+      </button>
       <div id="site-info">
         <TbMovie id="movie-icon" />
         <p id="site-name">Movie Picker</p>
@@ -67,16 +67,48 @@ const Home = () => {
         <h2>or choose from the lists below</h2>
       </div>
       <div className="suggestions-container">
-        <MovieList movieList={moviesTrending} listTitle={"Trending Movies"} />
         <MovieList
+          theme={theme}
+          movieList={moviesTrending}
+          listTitle={"Trending Movies"}
+          listMediaType={"movie"}
+        />
+        <MovieList
+          theme={theme}
           movieList={moviesNowPlaying}
           listTitle={"Movies Now Playing"}
+          listMediaType={"movie"}
         />
-        <MovieList movieList={showsAiring} listTitle={"Shows Airing Today"} />
-        <MovieList movieList={popularMovies} listTitle={"Popular Movies"} />
-        <MovieList movieList={popularShows} listTitle={"Popular Shows"} />
-        <MovieList movieList={topMovies} listTitle={"Top Rated Movies"} />
-        <MovieList movieList={topShows} listTitle={"Top Rated Shows"} />
+        <MovieList
+          theme={theme}
+          movieList={showsAiring}
+          listTitle={"Shows Airing Today"}
+          listMediaType={"tv"}
+        />
+        <MovieList
+          theme={theme}
+          movieList={popularMovies}
+          listTitle={"Popular Movies"}
+          listMediaType={"movie"}
+        />
+        <MovieList
+          theme={theme}
+          movieList={popularShows}
+          listTitle={"Popular Shows"}
+          listMediaType={"tv"}
+        />
+        <MovieList
+          theme={theme}
+          movieList={topMovies}
+          listTitle={"Top Rated Movies"}
+          listMediaType={"movie"}
+        />
+        <MovieList
+          theme={theme}
+          movieList={topShows}
+          listTitle={"Top Rated Shows"}
+          listMediaType={"tv"}
+        />
       </div>
     </div>
   );
