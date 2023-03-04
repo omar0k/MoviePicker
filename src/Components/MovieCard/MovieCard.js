@@ -12,12 +12,13 @@ const MovieCard = ({
   movieID,
   listMediaType,
 }) => {
+  // console.log(mediaType);
   return (
     <div className="movie-info">
       <Link
         className="movie-link"
         to={`/c/${
-          listMediaType ? listMediaType : mediaType === "movie" ? "movie" : "tv"
+          mediaType ? (mediaType === "movie" ? "movie" : "tv") : listMediaType
         }/${movieID}--${removeSpacesFromTitle(movieTitle)}`}
       >
         <div>

@@ -27,13 +27,13 @@
 }
 
 #search-bar:focus {
-    border: solid 3px #98A8F8;
+    border: solid 2px #515d9b;
     box-shadow: 0 5px 8px rgb(0 0 0 / 10%), 0 -5px 8px rgb(0 0 0 / 10%), 5px 0 8px rgb(0 0 0 / 10%), -5px 0 8px rgb(0 0 0 / 10%);
 }
 
 #search-bar {
     top: 100%;
-    border: solid 3px gray;
+    border: solid 2px gray;
     border-radius: 10px;
     background-color: white;
     transition-duration: .35s;
@@ -42,6 +42,7 @@
     padding: 15px;
     height: 30px;
     width: 600px;
+    margin-bottom: 5px;
 }
 
 .search-icon {

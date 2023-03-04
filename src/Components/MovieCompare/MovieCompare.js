@@ -5,6 +5,7 @@ import KEY from "../Key";
 import Search from "../Search/Search";
 import "./MovieCompare.css";
 import Movie from "../Movie/Movie";
+import { TbMovie } from "react-icons/tb";
 
 const MovieCompare = () => {
   let baseUrl = "https://api.themoviedb.org/3/";
@@ -33,7 +34,7 @@ const MovieCompare = () => {
       <div className="top-nav">
         <Link to={"/"}>
           <button className="buttons" id="home">
-            Home
+            <TbMovie />
           </button>
         </Link>
         <Search />

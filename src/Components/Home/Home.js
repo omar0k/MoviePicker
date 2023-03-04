@@ -53,6 +53,9 @@ const Home = () => {
   useEffect(() => {
     document.body.className = theme;
   }, [theme]);
+  // moviesTrending.slice(0, 5).map((movie) => {
+  //   console.log(movie.media_type, movie.title ? movie.title : movie.name);
+  // });
   return (
     <div className={`home ${theme}`}>
       <button onClick={toggleTheme} id="dark-mode-toggle">
