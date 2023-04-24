@@ -1,22 +1,26 @@
 import axios from "axios";
 import { TbMovie } from "react-icons/tb";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import MovieList from "../MovieList/MovieList";
 import KEY from "../Key";
 import Search from "../Search/Search";
 import "./Home.css";
+import { ThemeContext } from "../../ThemeContext";
 import { BsFillSunFill, BsFillMoonFill } from "react-icons/bs";
 const baseUrl = "https://api.themoviedb.org/3/";
 
 const Home = () => {
-  const [theme, setTheme] = useState("light");
+  const { theme, setTheme } = useContext(ThemeContext);
   const toggleTheme = () => {
-    if (theme === "light") {
-      setTheme("dark");
-    } else {
-      setTheme("light");
-    }
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
   };
+
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
   const [moviesTrending, setMoviesTrending] = useState([]);
   const [moviesNowPlaying, setMoviesNowPlaying] = useState([]);
   const [showsAiring, setShowsAiring] = useState([]);
@@ -50,12 +54,6 @@ const Home = () => {
         console.log(error);
       });
   }, []);
-  useEffect(() => {
-    document.body.className = theme;
-  }, [theme]);
-  // moviesTrending.slice(0, 5).map((movie) => {
-  //   console.log(movie.media_type, movie.title ? movie.title : movie.name);
-  // });
   return (
     <div className={`home ${theme}`}>
       <button onClick={toggleTheme} id="dark-mode-toggle">

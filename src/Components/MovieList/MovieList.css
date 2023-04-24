@@ -18,7 +18,7 @@
 }
 
 .movie-list.dark {
-    background-color: #232323;
+    background-color: #202123;
     box-shadow: 0 0 10px 1px var(--primary-light-color);
     color: white;
 

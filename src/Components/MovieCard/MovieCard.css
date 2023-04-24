@@ -24,6 +24,10 @@
     color: black;
 }
 
+.movie-link.dark {
+    color: red;
+}
+
 .movie-link {
     color: #555;
     flex-flow: row nowrap;

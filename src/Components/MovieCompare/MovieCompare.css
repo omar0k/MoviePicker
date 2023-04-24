@@ -8,6 +8,10 @@
     align-items: center;
 }
 
+.top-nav.dark {
+    background-color: var(--main-bg-color-dark);
+}
+
 .top-nav {
     position: relative;
     display: flex;
