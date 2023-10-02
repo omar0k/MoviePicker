@@ -1,6 +1,6 @@
 # Movie & Show Comparison Website
 
-![Website Screenshot](![image](https://github.com/omar0k/MoviePicker/assets/44348679/8dd332eb-8ed3-4f66-a928-365376a87450))
+![Website Screenshot](https://github.com/omar0k/MoviePicker/raw/main/assets/44348679/8dd332eb-8ed3-4f66-a928-365376a87450.png)
 
 Welcome to the Movie & Show Comparison website! This web application allows users to compare movies and TV shows side by side and provides an intuitive interface for comparing their details and ratings. You can also add images to enhance the visual experience.
 
