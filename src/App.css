@@ -1,11 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-:root {
-    --main-bg-color-light: #FAF7F0;
-    --primary-light-color: #98A8F8;
-    --secondary-light-color: #CDFCF6;
-    --main-bg-color-dark: #343541
-}
+
 
 * {
     font-family: 'Poppins', sans-serif;
@@ -17,7 +12,3 @@ a {
     text-decoration: none;
 }
 
-body {
-
-    background-color: var(--main-bg-color-light);
-}

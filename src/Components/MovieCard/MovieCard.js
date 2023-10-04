@@ -1,7 +1,6 @@
 import React from "react";
 import { removeSpacesFromTitle } from "../Utils/Utils";
 import { Link } from "react-router-dom";
-import "./MovieCard.css";
 
 const MovieCard = ({
   mediaType,
@@ -14,9 +13,9 @@ const MovieCard = ({
 }) => {
   // console.log(mediaType);
   return (
-    <div className="movie-info">
+    <div className="movie-info transition-colors text-gray-500 hover:text-black hover:bg-primary pl-1 rounded-md duration-300  font-extrabold ">
       <Link
-        className="movie-link"
+        className="w-full flex py-2"
         to={`/c/${
           mediaType ? (mediaType === "movie" ? "movie" : "tv") : listMediaType
         }/${movieID}--${removeSpacesFromTitle(movieTitle)}`}
@@ -24,10 +23,13 @@ const MovieCard = ({
         <div>
           <img src={moviePoster} alt={movieTitle} />
         </div>
-        <div className="movie-details">
+        <div className="pl-2">
           <h5 id="title">{movieTitle}</h5>
-          <span id="date">{movieYear}</span>
-          <span id="movie-rating"> {movieRating}</span>
+          <span className="text-sm opacity-70">{movieYear}</span>
+          <span className="text-orange-400 font-awesome before:content-['\f005'] ">
+            {" "}
+            {movieRating}
+          </span>
         </div>
       </Link>
     </div>

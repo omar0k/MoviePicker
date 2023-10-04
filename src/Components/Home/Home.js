@@ -55,15 +55,15 @@ const Home = () => {
       });
   }, []);
   return (
-    <div className={`home ${theme}`}>
-      <button onClick={toggleTheme} id="dark-mode-toggle">
-        {theme === "light" ? <BsFillMoonFill /> : <BsFillSunFill />}
-      </button>
-      <div id="site-info">
-        <TbMovie id="movie-icon" />
+    <div className={`home  bg-${theme}Bg flex flex-col`}>
+      <div className="flex flex-col justify-center items-center">
+        <button onClick={toggleTheme} id="dark-mode-toggle">
+          {theme === "light" ? <BsFillMoonFill /> : <BsFillSunFill />}
+        </button>
+        <TbMovie className="text-[10rem] text-primary" />
         <p id="site-name">Movie Picker</p>
+        <Search />
       </div>
-      <Search />
       <div id="choose-text">
         <h2>or choose from the lists below</h2>
       </div>

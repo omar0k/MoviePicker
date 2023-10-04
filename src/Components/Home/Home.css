@@ -1,31 +1,5 @@
-.dark {
-    background-color: var(--main-bg-color-dark);
-}
 
-.light {
-    background-color: white;
-}
 
-#dark-mode-toggle {
-    margin-top: 20px;
-    border: 0;
-    display: flex;
-    position: absolute;
-    right: 10%;
-    background-color: var(--primary-light-color);
-    justify-content: center;
-    align-items: center;
-    padding: 5px;
-    border-radius: 10px;
-    cursor: pointer;
-    box-shadow: 0 0 3px 2px gray;
-
-}
-
-#dark-mode-toggle svg {
-    font-size: 2rem;
-    color: black;
-}
 
 .suggestions-container {
 

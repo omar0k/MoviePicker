@@ -3,7 +3,6 @@ import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import KEY from "../Key";
 import Search from "../Search/Search";
-import "./MovieCompare.css";
 import Movie from "../Movie/Movie";
 import { BsFillMoonFill, BsFillSunFill } from "react-icons/bs";
 import { TbMovie } from "react-icons/tb";
@@ -37,26 +36,32 @@ const MovieCompare = () => {
     localStorage.setItem("theme", newTheme);
   };
   return (
-    <>
-      <div className={`top-nav ${theme}`}>
+    <div className={`flex flex-col justify-center items-center bg-${theme}Bg`}>
+      <div
+        className={`bg-${theme} flex relative justify-evenly container items-center my-5 `}
+      >
         <Link to={"/"}>
-          <button className="buttons" id="home">
+          <button className="bg-gradient-to-br p-2  from-primary to-white rounded-md text-4xl">
             <TbMovie />
           </button>
         </Link>
         <Search />
-        <button onClick={toggleTheme} id="dark-mode-toggle">
+        <button
+          onClick={toggleTheme}
+          id="dark-mode-toggle"
+          className="bg-primary p-2 rounded-md text-black text-[2rem] shadow-lg "
+        >
           {theme === "light" ? <BsFillMoonFill /> : <BsFillSunFill />}
         </button>
       </div>
       {unique.length <= 5 && (
-        <div className="movies-container">
+        <div className="flex w-full h-full text-center overflow-x-auto justify-center items-center">
           {unique.map((item, index) => {
             return <Movie movie={item} key={index} mediaType={mediatype} />;
           })}
         </div>
       )}
-    </>
+    </div>
   );
 };
 
