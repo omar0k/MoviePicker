@@ -4,21 +4,11 @@ import { dateToMonthYear } from "../Utils/Utils";
 import MovieCard from "../MovieCard/MovieCard";
 let posterUrl = "https://image.tmdb.org/t/p/w45/";
 
-const MovieList = ({
-  movieList,
-  listTitle,
-  backgroundColor,
-  boxShadow,
-  listMediaType,
-  theme,
-}) => {
+const MovieList = ({ movieList, listTitle, listMediaType }) => {
+  const theme = localStorage.getItem("theme");
   return (
     <div
-      className={`movie-list ${theme}`}
-      style={{
-        backgroundColor: backgroundColor,
-        boxShadow: boxShadow,
-      }}
+      className={`bg-${theme}Accent text-${theme}Text max-w-[350px] w-full border p-5 border-primary shadow-2xl rounded-md`}
     >
       <h5 id="list-title">{listTitle}</h5>
       {movieList.slice(0, 5).map((movie, index) => {

@@ -1,25 +1,16 @@
 import axios from "axios";
+import ThemeToggle from "../ThemeToggleButton";
 import { TbMovie } from "react-icons/tb";
+import Search from "../Search/Search";
+
 import React, { useState, useEffect, useContext } from "react";
 import MovieList from "../MovieList/MovieList";
 import KEY from "../Key";
-import Search from "../Search/Search";
-import "./Home.css";
 import { ThemeContext } from "../../ThemeContext";
-import { BsFillSunFill, BsFillMoonFill } from "react-icons/bs";
 const baseUrl = "https://api.themoviedb.org/3/";
 
 const Home = () => {
-  const { theme, setTheme } = useContext(ThemeContext);
-  const toggleTheme = () => {
-    const newTheme = theme === "light" ? "dark" : "light";
-    setTheme(newTheme);
-    localStorage.setItem("theme", newTheme);
-  };
-
-  useEffect(() => {
-    localStorage.setItem("theme", theme);
-  }, [theme]);
+  const { theme } = useContext(ThemeContext);
 
   const [moviesTrending, setMoviesTrending] = useState([]);
   const [moviesNowPlaying, setMoviesNowPlaying] = useState([]);
@@ -55,19 +46,21 @@ const Home = () => {
       });
   }, []);
   return (
-    <div className={`home  bg-${theme}Bg flex flex-col`}>
-      <div className="flex flex-col justify-center items-center">
-        <button onClick={toggleTheme} id="dark-mode-toggle">
-          {theme === "light" ? <BsFillMoonFill /> : <BsFillSunFill />}
-        </button>
+    <div
+      className={`${
+        theme === "dark" ? "bg-darkBg" : "bg-lightBg"
+      } flex flex-col items-center`}
+    >
+      <div className="flex flex-col gap-5 justify-center items-center mb-5">
+        <ThemeToggle />
         <TbMovie className="text-[10rem] text-primary" />
-        <p id="site-name">Movie Picker</p>
+        <p className="text-[3rem]">Movie Picker</p>
         <Search />
+        <div className="opacity-70 text-2xl">
+          <h2>or choose from the lists below</h2>
+        </div>
       </div>
-      <div id="choose-text">
-        <h2>or choose from the lists below</h2>
-      </div>
-      <div className="suggestions-container">
+      <div className="flex  container gap-10 flex-wrap justify-center">
         <MovieList
           theme={theme}
           movieList={moviesTrending}

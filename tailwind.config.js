@@ -12,6 +12,10 @@ module.exports = {
         secondary: "#CDFCF6", // Secondary accent color
         darkBg: "#343541", // Background color for dark themes
         lightBg: "#FAF7F0",
+        darkAccent: "#202123",
+        lightAccent: "#ffffff",
+        darkText:"#ffffff",
+        lightText:"#555555",
       },
     },
   },

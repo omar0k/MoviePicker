@@ -17,12 +17,7 @@
     width: 100%;
 }
 
-.movie-list.dark {
-    background-color: #202123;
-    box-shadow: 0 0 10px 1px var(--primary-light-color);
-    color: white;
 
-}
 
 .movie-list.light {
     background-color: var(--main-bg-color-light);
