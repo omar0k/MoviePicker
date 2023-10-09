@@ -15,7 +15,7 @@ module.exports = {
         darkAccent: "#202123",
         lightAccent: "#ffffff",
         darkText:"#ffffff",
-        lightText:"#555555",
+        lightText:"#000000",
       },
     },
   },

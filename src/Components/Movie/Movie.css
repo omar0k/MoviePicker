@@ -1,27 +1,8 @@
-#vote-average::before {
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
-    color: #f7911d;
-    content: "\f005";
-}
 
 #movie-item {
-    display: flex;
-    height: 1250px;
-    flex-flow: column;
-    gap: 10px;
-    color: white;
-    box-shadow: 60px 60px 150px black inset, -60px -60px 150px black inset;
-    width: 100%;
-    align-items: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: top center;
+        
 }
 
-#img-btn {
-    position: relative;
-}
 
 #img-btn #remove-btn {
     border: 0;
@@ -39,36 +20,9 @@
     font-size:1.5rem;
 }
 
-#overview {
-    color: inherit;
-    width: 250px;
-    height: 200px;
-    overflow-y: auto;
-}
 
-#genre~#genre::before {
-    content: ', ';
-}
 
-#country~#country::before {
-    content: ', ';
-}
 
-#poster {
-    border-radius: 10px;
-    margin-top: 10px;
-    box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.399);
-}
 
-#revenue {
-    margin-left: 20px;
-    color: greenyellow;
-}
 
-#company~#company::before {
-    content: ", ";
-}
 
-#runtime {
-    padding-right: 15px;
-}

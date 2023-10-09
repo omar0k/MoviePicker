@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
-import Home from "./Components/Home/Home";
+import Home from "./Components/Home";
 import "./App.css";
-import MovieCompare from "./Components/MovieCompare/MovieCompare";
+import MovieCompare from "./Components/MovieCompare";
 const App = () => {
   return (
     <Routes>

@@ -11,7 +11,14 @@ function ThemeToggle() {
   };
 
   return (
-    <button onClick={toggleTheme} id="dark-mode-toggle">
+    <button
+      onClick={toggleTheme}
+      className={` text-2xl shadow-lg p-3 rounded-lg ${
+        theme === "dark"
+          ? "bg-darkAccent text-darkText"
+          : "bg-lightAccent border  text-lightText"
+      }  border-md`}
+    >
       {theme === "light" ? <BsFillMoonFill /> : <BsFillSunFill />}
     </button>
   );
