@@ -1,12 +1,13 @@
 import { Link, useParams } from "react-router-dom";
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import KEY from "../Key";
-import Search from "../Search/Search";
-import Movie from "../Movie/Movie";
+import KEY from "./Key";
+import Search from "./Search";
+import Movie from "./Movie";
 import { BsFillMoonFill, BsFillSunFill } from "react-icons/bs";
 import { TbMovie } from "react-icons/tb";
-import { ThemeContext } from "../../ThemeContext";
+import { ThemeContext } from "../ThemeContext";
+import ThemeToggle from "./ThemeToggleButton";
 
 const MovieCompare = () => {
   let baseUrl = "https://api.themoviedb.org/3/";
@@ -46,13 +47,7 @@ const MovieCompare = () => {
           </button>
         </Link>
         <Search />
-        <button
-          onClick={toggleTheme}
-          id="dark-mode-toggle"
-          className="bg-primary p-2 rounded-md text-black text-[2rem] shadow-lg "
-        >
-          {theme === "light" ? <BsFillMoonFill /> : <BsFillSunFill />}
-        </button>
+        <ThemeToggle />
       </div>
       {unique.length <= 5 && (
         <div className="flex w-full h-full text-center overflow-x-auto justify-center items-center">

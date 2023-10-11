@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { removeSpacesFromTitle } from "../Utils/Utils";
 import { Link } from "react-router-dom";
+import { ThemeContext } from "../ThemeContext";
 
 const MovieCard = ({
   mediaType,
@@ -10,23 +11,30 @@ const MovieCard = ({
   moviePoster,
   movieID,
   listMediaType,
+  backgroundColor,
 }) => {
-  // console.log(mediaType);
+  const { theme } = useContext(ThemeContext);
   return (
-    <div className="movie-info transition-colors text-gray-500 hover:text-black hover:bg-primary pl-1 rounded-md duration-300  font-extrabold ">
+    <div
+      className={`transition-colors ${
+        backgroundColor === "transparent" ? "text-white" : ""
+      }${
+        theme === "dark" ? "text-darkText" : "text-lightText"
+      } text-gray-300 hover:text-black hover:bg-primary pl-1 rounded-md duration-300   w-full`}
+    >
       <Link
         className="w-full flex py-2"
         to={`/c/${
           mediaType ? (mediaType === "movie" ? "movie" : "tv") : listMediaType
         }/${movieID}--${removeSpacesFromTitle(movieTitle)}`}
       >
-        <div>
+        <div className="min-w-[45px]">
           <img src={moviePoster} alt={movieTitle} />
         </div>
-        <div className="pl-2">
-          <h5 id="title">{movieTitle}</h5>
+        <div className={`pl-2  flex flex-col justify-center items-start`}>
+          <h5 className="text-start">{movieTitle}</h5>
           <span className="text-sm opacity-70">{movieYear}</span>
-          <span className="text-orange-400 font-awesome before:content-['\f005'] ">
+          <span className="font-extrabold text-sm text-orange-400 font-awesome before:content-['\f005'] ">
             {" "}
             {movieRating}
           </span>

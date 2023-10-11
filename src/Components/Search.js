@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 // import "./Search.css";
-import KEY from "../Key";
+import KEY from "./Key";
 import { AiOutlineSearch, AiOutlineClose } from "react-icons/ai";
 import axios from "axios";
-import SearchResult from "../SearchResult/SearchResult";
+import SearchResult from "./SearchResult";
 
 const Search = () => {
   const baseUrl = "https://api.themoviedb.org/3/";
@@ -57,7 +57,7 @@ const Search = () => {
     <div className="w-[600px]">
       <div className="search-inputs  relative flex ">
         <input
-          className="rounded-md  border-primary border focus:outline-primary flex-1 px-4 py-2 "
+          className="rounded-md text-black border-primary border focus:outline-primary flex-1 px-4 py-2 "
           onBlur={() => {
             setTimeout(() => {
               document.getElementById("dropdown") &&
@@ -77,16 +77,19 @@ const Search = () => {
           value={wordEntered}
           onChange={handleFilter}
         />
-        <div className="absolute right-0 pr-2 top-0 bottom-0 flex items-center pl-3">
+        <div className="absolute right-0 pr-2 top-0 bottom-0 flex items-center pl-3 text-black">
           {wordEntered.length === 0 ? (
             <AiOutlineSearch className="text-2xl" />
           ) : (
-            <AiOutlineClose className="text-2xl cursor-pointer" onClick={clearInput} />
+            <AiOutlineClose
+              className="text-2xl cursor-pointer"
+              onClick={clearInput}
+            />
           )}
         </div>
       </div>
       {filteredData.length !== 0 && (
-        <div className="absolute top-full h-[200px] w-[600px]  py-2 overflow-y-scroll bg-white z-10 " id="dropdown">
+        <div className="absolute  h-[200px] w-[600px]  py-2 overflow-y-scroll bg-white z-10  ">
           <ul>
             {filteredData.map((value, key) => {
               return (

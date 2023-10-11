@@ -1,30 +1,34 @@
-import { React } from "react";
-import "./MovieList.css";
+import { React, useContext } from "react";
 import { dateToMonthYear } from "../Utils/Utils";
-import MovieCard from "../MovieCard/MovieCard";
+import MovieCard from "./MovieCard";
+import { ThemeContext } from "../ThemeContext";
 let posterUrl = "https://image.tmdb.org/t/p/w45/";
 
 const MovieList = ({
   movieList,
   listTitle,
-  backgroundColor,
-  boxShadow,
   listMediaType,
-  theme,
+  backgroundColor,
 }) => {
+  const { theme } = useContext(ThemeContext);
   return (
     <div
-      className={`movie-list ${theme}`}
-      style={{
-        backgroundColor: backgroundColor,
-        boxShadow: boxShadow,
-      }}
+      className={`transition-all duration-300 min-w-[300px]  ${
+        listTitle === "Related" ? "mt-10" : ""
+      } ${
+        backgroundColor === "transparent" ? `bg-transparent text-white` : ""
+      } ${
+        theme === "dark"
+          ? "bg-darkAccent text-darkText"
+          : "bg-lightAccent text-lightText "
+      } max-w-[350px] w-full p-5 shadow-2xl  backdrop-blur-lg bg-opacity-70 rounded-xl`}
     >
-      <h5 id="list-title">{listTitle}</h5>
+      <h5 className="mb-3 font-semibold text-lg">{listTitle}</h5>
       {movieList.slice(0, 5).map((movie, index) => {
         return (
           <MovieCard
             listMediaType={listMediaType}
+            backgroundColor={backgroundColor}
             {...movie}
             key={index}
             mediaType={movie.media_type}
