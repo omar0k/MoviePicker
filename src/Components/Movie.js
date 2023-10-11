@@ -1,13 +1,12 @@
 import axios from "axios";
 import React, { useState } from "react";
-import KEY from "../Key";
-import MovieList from "../MovieList";
+import KEY from "./Key";
+import MovieList from "./MovieList";
 import {
   dateToMonthYear,
   getRunTimeInHours,
   shortenNumber,
 } from "../Utils/Utils";
-import "./Movie.css";
 import { AiFillCloseCircle } from "react-icons/ai";
 
 const Movie = ({ movie, mediaType }) => {
@@ -37,7 +36,7 @@ const Movie = ({ movie, mediaType }) => {
 
   return (
     <div
-      className="flex flex-col gap-3 text-white bg-cover bg-center bg-no-repeat w-full min-h-[100%] items-center h-auto"
+      className="flex flex-col gap-3 text-white bg-cover bg-center bg-no-repeat w-full h-[1250px] items-center "
       style={{
         boxShadow: "60px 60px 150px black inset, -60px -60px 150px black inset",
         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${
@@ -53,8 +52,8 @@ const Movie = ({ movie, mediaType }) => {
           src={posterUrl + movie.poster_path}
           alt={movie.original_title}
         />
-        <button className="text-2xl absolute top-[5%] right-0 ">
-          <AiFillCloseCircle />
+        <button className="text-2xl absolute bg-black rounded-full top-[5%] right-0 ">
+          <AiFillCloseCircle className="" />
         </button>
       </div>
       <div>
@@ -115,13 +114,8 @@ const Movie = ({ movie, mediaType }) => {
           {movie.revenue ? shortenNumber(movie.revenue) : ""}
         </span>
       </div>
-      <div className="">
-        <p
-          className={`line-clamp-${expanded ? "none" : "3"} cursor-pointer `}
-          onClick={toggleExpand}
-        >
-          {movie.overview}
-        </p>
+      <div className="overflow-y-auto h-[300px] w-[250px]">
+        <p>{movie.overview}</p>
       </div>
       <div>
         {

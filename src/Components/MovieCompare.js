@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import KEY from "./Key";
 import Search from "./Search";
-import Movie from "./Movie/Movie";
+import Movie from "./Movie";
 import { BsFillMoonFill, BsFillSunFill } from "react-icons/bs";
 import { TbMovie } from "react-icons/tb";
 import { ThemeContext } from "../ThemeContext";

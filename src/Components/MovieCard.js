@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { removeSpacesFromTitle } from "./Utils/Utils";
+import { removeSpacesFromTitle } from "../Utils/Utils";
 import { Link } from "react-router-dom";
 import { ThemeContext } from "../ThemeContext";
 
@@ -11,11 +11,14 @@ const MovieCard = ({
   moviePoster,
   movieID,
   listMediaType,
+  backgroundColor,
 }) => {
   const { theme } = useContext(ThemeContext);
   return (
     <div
       className={`transition-colors ${
+        backgroundColor === "transparent" ? "text-white" : ""
+      }${
         theme === "dark" ? "text-darkText" : "text-lightText"
       } text-gray-300 hover:text-black hover:bg-primary pl-1 rounded-md duration-300   w-full`}
     >
@@ -28,12 +31,8 @@ const MovieCard = ({
         <div className="min-w-[45px]">
           <img src={moviePoster} alt={movieTitle} />
         </div>
-        <div
-          className={`pl-2  flex flex-col justify-center items-start ${
-            theme === "dark" ? "text-darkText" : "text-lightText"
-          }`}
-        >
-          <h5 className="">{movieTitle}</h5>
+        <div className={`pl-2  flex flex-col justify-center items-start`}>
+          <h5 className="text-start">{movieTitle}</h5>
           <span className="text-sm opacity-70">{movieYear}</span>
           <span className="font-extrabold text-sm text-orange-400 font-awesome before:content-['\f005'] ">
             {" "}

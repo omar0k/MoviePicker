@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { removeSpacesFromTitle } from "./Utils/Utils";
+import { removeSpacesFromTitle } from "../Utils/Utils";
 
 const SearchResult = ({ movie }) => {
   let posterUrl = `https://image.tmdb.org/t/p/`;
