@@ -52,7 +52,7 @@ const Movie = ({ movie, mediaType }) => {
           src={posterUrl + movie.poster_path}
           alt={movie.original_title}
         />
-        <button className="text-2xl absolute bg-black rounded-full top-[5%] right-0 ">
+        <button className="text-2xl hidden absolute bg-black rounded-full top-[5%] right-0 ">
           <AiFillCloseCircle className="" />
         </button>
       </div>
