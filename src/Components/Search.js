@@ -54,10 +54,10 @@ const Search = () => {
     setWordEntered("");
   };
   return (
-    <div className="w-[600px]">
+    <div className="xl:w-[600px] sm:w-[300px]"> 
       <div className="search-inputs  relative flex ">
         <input
-          className="rounded-md text-black border-primary border focus:outline-primary flex-1 px-4 py-2 "
+          className="rounded-md text-black border-primary border  focus:outline-primary flex-1 px-4 py-2 "
           onBlur={() => {
             setTimeout(() => {
               document.getElementById("dropdown") &&
@@ -89,7 +89,7 @@ const Search = () => {
         </div>
       </div>
       {filteredData.length !== 0 && (
-        <div className="absolute  h-[200px] w-[600px]  py-2 overflow-y-scroll bg-white z-10  ">
+        <div className="absolute sm:left-0 h-[200px] xl:w-[600px]  py-2 overflow-y-scroll bg-white z-10  ">
           <ul>
             {filteredData.map((value, key) => {
               return (
