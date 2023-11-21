@@ -4,7 +4,6 @@ import axios from "axios";
 import KEY from "./Key";
 import Search from "./Search";
 import Movie from "./Movie";
-import { BsFillMoonFill, BsFillSunFill } from "react-icons/bs";
 import { TbMovie } from "react-icons/tb";
 import { ThemeContext } from "../ThemeContext";
 import ThemeToggle from "./ThemeToggleButton";
@@ -31,11 +30,7 @@ const MovieCompare = () => {
     alert("Too many movies");
     unique.length = 5;
   }
-  const toggleTheme = () => {
-    const newTheme = theme === "light" ? "dark" : "light";
-    setTheme(newTheme);
-    localStorage.setItem("theme", newTheme);
-  };
+
   return (
     <div className={`flex flex-col justify-center items-center bg-${theme}Bg`}>
       <div
