@@ -27,6 +27,7 @@ const MovieCompare = () => {
     ...new Map(MovieCompare.map((item) => [item["id"], item])).values(),
   ];
   if (unique.length > 5) {
+    setTheme();
     alert("Too many movies");
     unique.length = 5;
   }
