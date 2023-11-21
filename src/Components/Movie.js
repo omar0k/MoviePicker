@@ -14,11 +14,6 @@ const Movie = ({ movie, mediaType }) => {
   const baseUrl = "https://api.themoviedb.org/3/";
   const posterUrl = "https://image.tmdb.org/t/p/w154/";
   const backdropUrl = "https://image.tmdb.org/t/p/w1280/";
-  const [expanded, setExpanded] = useState(false);
-
-  const toggleExpand = () => {
-    setExpanded(!expanded);
-  };
 
   useState(() => {
     mediaType === "tv"
