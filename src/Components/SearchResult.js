@@ -16,7 +16,7 @@ const SearchResult = ({ movie }) => {
           )}`}
         >
           <img
-          className="mr-3"
+            className="mr-3"
             src={
               movie.poster_path
                 ? posterUrl + "w45" + movie.poster_path
