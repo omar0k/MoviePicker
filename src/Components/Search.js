@@ -89,7 +89,7 @@ const Search = () => {
         </div>
       </div>
       {filteredData.length !== 0 && (
-        <div className="absolute sm:left-0 h-[200px] xl:w-[600px]  py-2 overflow-y-scroll bg-white z-10  ">
+        <div className=" sm:left-0 h-[200px] xl:w-[600px]  py-2 overflow-y-scroll bg-white z-10  ">
           <ul>
             {filteredData.map((value, key) => {
               return (
