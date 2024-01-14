@@ -59,7 +59,7 @@ const Home = () => {
       </div>
       <div className="flex flex-col gap-5 justify-center items-center mb-5">
         <TbMovie className="text-[10rem] text-primary" />
-        <p className="text-[3rem]">Movie Picker</p>
+        <p className="text-[3rem]">Flick View</p>
         <Search />
         <div className="opacity-70 text-2xl">
           <h2>or choose from the lists below</h2>
