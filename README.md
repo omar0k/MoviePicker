@@ -1,4 +1,4 @@
-# [Movie & Show Comparison Website](https://moviepickem.netlify.app/)
+# [Movie & Show Comparison Website](https://flickview.netlify.app/)
 
 ![Website Screenshot](https://i.imgur.com/wwYXpOw.png)
 
